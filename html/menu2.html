@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Ecliptic Mod Menu - FranCangel Dev</title>
+    <!-- Bootstrap icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- CSS principal -->
+    <link href="../css/styles.css" rel="stylesheet" />
+    <style>
+        .product-section .img-fluid {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+        }
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        /* Estilo para la galería de miniaturas */
+        .thumbnail-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 1rem;
+        }
+        .thumbnail-gallery img {
+            border: 2px solid transparent;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        .thumbnail-gallery img:hover,
+        .thumbnail-gallery img.active {
+            border-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-ultradark">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="../index.html">FranCangel Dev</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección del Producto -->
+    <section class="py-5 bg-dark text-white product-section">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-10">
+                    <div class="text-center mb-5">
+                        <h1 class="display-5 fw-bolder">Ecliptic Mod Loader</h1>
+                        <p class="lead fw-normal text-white-50 mb-0">Mod Loader para GTA V de PlayStation 3</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row gx-5">
+                <!-- Imagen principal y galería de miniaturas -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <img id="main-product-image" src="../assets/modmenu.png" alt="Ecliptic Mod Menu" class="img-fluid rounded-3">
+                    <div class="thumbnail-gallery">
+                        <img src="../assets/eclipticv3.png" alt="Menú 1" class="img-fluid rounded-3" onclick="changeImage('../assets/eclipticv3.png')">
+                        <img src="../assets/image.png" alt="Menú 2" class="img-fluid rounded-3" onclick="changeImage('../assets/image.png')">
+                        <img src="../assets/modmenu.png" alt="Menú 3" class="img-fluid rounded-3" onclick="changeImage('../assets/modmenu.png')">
+                        <img src="../assets/modmenu.png" alt="Menú 4" class="img-fluid rounded-3" onclick="changeImage('../assets/modmenu.png')">
+                    </div>
+                </div>
+                <!-- Descripción y detalles -->
+                <div class="col-lg-6">
+					<div class="badge bg-custom-green text-white mb-3">GTA V</div>
+					<div class="badge bg-custom-purple text-white mb-3">1.27</div>
+					<div class="badge bg-custom-red text-white mb-3">REV</div>
+					<div class="badge bg-primary text-white mb-3">.RPF</div>
+                    <p class="lead">
+                        Mod Loader para GTA V PS3, actualizado a la versión 1.27 y REV, compatible con diferentes configuraciones de consola. Permite personalizar y gestionar múltiples aspectos del juego tanto offline como online, manteniendo estabilidad y compatibilidad con todas las funciones principales y opciónes exclusivas.
+                    </p>
+                    <p class="lead fw-bolder">
+                        Características destacadas:
+                        <ul>
+                            <li>Compatible con GTA V 1.27 y REV.</li>
+                            <li>Soporte para consolas CEX, DEX, BLUS, BLES, HEN y CFW.</li>
+							<li>Todas las opciónes porpias de un sprx y mod menu en un solo menú.</li>
+                        </ul>
+                    </p>
+					<div class="mb-3 text-center text-lg-start">
+						<!-- <span class="fs-5 fw-normal" style="color:red; text-decoration: line-through; margin-right: 0.5rem;">21.99 USD</span> -->
+						<span class="fs-4 fw-bold" style="color:lime;">$ Gratis</span>
+					</div>
+
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-lg-start">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="contact.html" target="_blank">
+                            Descargar
+                        </a>
+                        <a class="btn btn-outline-light btn-lg px-4" href="https://discord.com/invite/xpnMuycgS7" target="_blank">
+                            Saber más
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Especificaciones y Características -->
+    <section class="py-5 bg-dark text-white border-top border-secondary">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-5">
+                <!-- Especificaciones -->
+                <div class="col-lg-6 mb-5">
+                    <h2 class="mb-4">Especificaciones:</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><strong>Jailbroken PS3 Required:</strong> Si</li>
+                        <li class="mb-2"><strong>GTA RE:V & 1.27:</strong> Si</li>
+                        <li class="mb-2"><strong>GTA Online:</strong> Si</li>
+						<li class="mb-2"><strong>HEN Supported:</strong> Si</li>
+						<li class="mb-2"><strong>CFW Supported:</strong> Si</li>
+                        <li class="mb-2"><strong>CEX Supported:</strong> Si</li>
+                        <li class="mb-2"><strong>DEX Supported:</strong> Si</li>
+                        <li class="mb-2"><strong>BLUS Supported:</strong> Si</li>
+                        <li class="mb-2"><strong>BLES Supported:</strong> Si</li>
+                        <li class="mb-2"><strong>NPEB Supported:</strong> Si</li>
+                        <li class="mb-2"><strong>NPUB Supported:</strong> Si</li>
+                    </ul>
+                </div>
+                <!-- Características -->
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Características:</h2>
+					<div class="row">
+						<div class="col-md-6">
+							<ul class="list-unstyled">
+								<li class="mb-2"><strong>Opciones de Jugador:</strong> Habilidades, animaciones y apariencia</li>
+								<li class="mb-2"><strong>Opciones de Vehículos:</strong> Generación y personalización</li>
+								<li class="mb-2"><strong>Opciones de Armas:</strong> Modificación y acceso completo</li>
+								<li class="mb-2"><strong>Teletransporte:</strong> A cualquier ubicación del mapa</li>
+								<li class="mb-2"><strong>Opciones del Mundo:</strong> Clima, hora, peatones y tráfico</li>
+								<li class="mb-2"><strong>Funciones Online:</strong> Gestión de sesiones y protección frente a otros modders</li>
+								<li class="mb-2"><strong>Recovery:</strong> Modificación de dinero, rango, desbloqueos y DLC</li>
+							</ul>
+						</div>
+						<div class="col-md-6">
+								<li class="mb-2"><strong>Menús Personalizables:</strong> Diseño, colores y disposición ajustables</li>
+								<li class="mb-2"><strong>Protección Avanzada:</strong> Prevención de congelamientos y bloqueos</li>
+								<li class="mb-2"><strong>Modularidad:</strong> Activación y desactivación de funciones según necesidad</li>
+							</ul>
+						</div>
+					</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-ultradark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; FranCangel Dev 2025</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script para cambiar la imagen principal -->
+    <script>
+        function changeImage(newImageUrl) {
+            document.getElementById('main-product-image').src = newImageUrl;
+        }
+    </script>
+</body>
+</html>

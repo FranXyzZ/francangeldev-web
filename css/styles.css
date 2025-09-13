@@ -11014,3 +11014,15 @@ textarea.form-control-lg {
   }
 }
 
+
+
+/* === COLORS === */
+.bg-custom-green {
+    background-color: #008000; /* Código de color verde, puedes modificarlo */
+}
+.bg-custom-purple {
+	background-color: #EE27F5;
+}
+.bg-custom-red {
+	background-color: #DE3535;
+}
