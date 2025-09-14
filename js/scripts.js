@@ -28,21 +28,15 @@ const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 
 let particles = [];
-const numParticles = 150; // Puedes ajustar la cantidad
+let numParticles;
+let maxDistance;
+let animationFrameId = null;
 
-// Ajusta tamaño del canvas
-function resizeCanvas() {
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-}
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
-
-// Clase Partícula
+// Clase para representar cada partícula
 class Particle {
-  constructor() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
     this.size = 2;
     this.speedX = (Math.random() - 0.5) * 1.5;
     this.speedY = (Math.random() - 0.5) * 1.5;
@@ -52,7 +46,6 @@ class Particle {
     this.x += this.speedX;
     this.y += this.speedY;
 
-    // Rebote en bordes
     if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
     if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
   }
@@ -60,30 +53,34 @@ class Particle {
   draw() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(255,255,255,0.7)";
+    ctx.fillStyle = "rgba(255,255,255,0.6)"; // un poco más translúcida
     ctx.fill();
   }
 }
 
-// Inicializar partículas
+// Inicializa partículas
 function initParticles() {
   particles = [];
   for (let i = 0; i < numParticles; i++) {
-    particles.push(new Particle());
+    particles.push(new Particle(
+      Math.random() * canvas.width,
+      Math.random() * canvas.height
+    ));
   }
 }
-initParticles();
 
-// Conexión de partículas
+// Conecta partículas solo si están cerca, con opacidad baja
 function connectParticles() {
   for (let a = 0; a < particles.length; a++) {
     for (let b = a + 1; b < particles.length; b++) {
-      let dx = particles[a].x - particles[b].x;
-      let dy = particles[a].y - particles[b].y;
-      let dist = dx * dx + dy * dy;
-      if (dist < 15000) {
-        ctx.strokeStyle = "rgba(255,255,255,0.2)";
-        ctx.lineWidth = 1;
+      const dx = particles[a].x - particles[b].x;
+      const dy = particles[a].y - particles[b].y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < maxDistance) {
+        const opacity = 0.1 * (1 - distance / maxDistance); // opacidad más baja
+        ctx.strokeStyle = `rgba(255,255,255,${opacity})`;
+        ctx.lineWidth = 0.8; // línea más fina
         ctx.beginPath();
         ctx.moveTo(particles[a].x, particles[a].y);
         ctx.lineTo(particles[b].x, particles[b].y);
@@ -96,11 +93,32 @@ function connectParticles() {
 // Animación
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => {
-    p.update();
-    p.draw();
-  });
+
+  particles.forEach(p => p.update());
+  particles.forEach(p => p.draw());
   connectParticles();
-  requestAnimationFrame(animate);
+
+  animationFrameId = requestAnimationFrame(animate);
 }
-animate();
+
+// Ajusta el canvas y reinicia partículas
+function resizeAndInitCanvas() {
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+
+  if (window.innerWidth < 768) {
+    numParticles = 50;
+    maxDistance = 120; // distancia más corta en móviles
+  } else {
+    numParticles = 120;
+    maxDistance = 180; // distancia más larga en escritorio
+  }
+
+  initParticles();
+
+  if (animationFrameId) cancelAnimationFrame(animationFrameId);
+  animate();
+}
+
+window.addEventListener("resize", resizeAndInitCanvas);
+resizeAndInitCanvas();
