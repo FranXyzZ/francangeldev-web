@@ -8161,7 +8161,12 @@ textarea.form-control-lg {
 
 .bg-ultradark {
 	--bs-bg-opacity: 1;
-	background-color: #141517;
+	background-color: #101011;
+}
+
+.bg-darkmin {
+	--bs-bg-opacity: 1;
+	background-color: #191A1B;
 }
 
 .bg-dark {
@@ -10923,11 +10928,6 @@ textarea.form-control-lg {
   transform: none !important;
 }
 
-/* Fondo ultra dark */
-.bg-ultradark {
-  background-color: #0a0a0a; /* puedes ajustar el color al que quieras */
-}
-
 /* Botón animado al pasar el cursor */
 .btn-hover-green {
   transition: all 0.3s ease;
@@ -10942,11 +10942,6 @@ textarea.form-control-lg {
   color: #fff;
   transform: translateY(-2px); /* efecto sutil de elevación */
   box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
-}
-
-/* Fondo ultra oscuro */
-.bg-ultradark {
-  background-color: #0a0a0a !important;
 }
 
 /* Botón animado */
@@ -10965,11 +10960,6 @@ textarea.form-control-lg {
   border-color: #28a745;
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(40, 167, 69, 0.4);
-}
-
-/* Card background ultra dark */
-.bg-ultradark {
-  background-color: #0a0a0a !important;
 }
 
 /* Imagen mantiene proporción */
@@ -11014,7 +11004,60 @@ textarea.form-control-lg {
   }
 }
 
+/* 🔹 Texto con efecto arcoíris animado */
+.rainbow-text {
+  background: linear-gradient(270deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00ab, #ff0000);
+  background-size: 1800% 1800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowShift 8s ease infinite;
+}
 
+@keyframes rainbowShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 🔹 Animación sutil para las imágenes de amigos */
+.friend-card img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.friend-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;      /* hace que respete el margin auto */
+  margin: 0 auto 10px; /* centrado horizontal + espacio abajo */
+}
+
+/* 🔹 Botones con gradiente rainbow */
+.btn-rainbow {
+  background: linear-gradient(90deg, #007bff, #00aaff); /* tonos de azul */
+  color: #fff;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.6); /* brillo sutil */
+  transition: all 0.3s ease;
+}
+
+.btn-rainbow:hover {
+  background: linear-gradient(90deg, #00aaff, #007bff);
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.9); /* brillo más fuerte al pasar el mouse */
+  transform: scale(1.05);
+  color: #fff;
+}
+
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1;
+}
 
 /* === COLORS === */
 .bg-custom-green {
@@ -11025,4 +11068,66 @@ textarea.form-control-lg {
 }
 .bg-custom-red {
 	background-color: #DE3535;
+}
+
+.offer-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: #27CA7F; /* Verde brillante */
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 10;
+    animation: pulse 1.5s infinite; /* Aplica la animación de parpadeo */
+}
+
+/* Animación para el efecto de parpadeo */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); /* Sombra inicial, opacidad alta */
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); /* Sombra se expande y se desvanece */
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); /* Vuelve al estado original */
+    }
+}
+
+/* Botones minimalistas */
+.minimal-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.minimal-btn:hover {
+    transform: translateY(-5px);
+    color: #00bfff;
+}
+
+/* Imágenes circulares más simples */
+.minimal-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+    transition: box-shadow 0.3s;
+}
+
+.minimal-btn:hover .minimal-img {
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.4);
+}
+
+/* Texto limpio */
+.minimal-btn span {
+    font-size: 0.95rem;
+    font-weight: 500;
 }
