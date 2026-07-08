@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Curso de creación de mods para GTA V PS3: aprende a modificar update.rpf y a crear tus propias modificaciones." />
+    <title>Curso de Creación de Mods - FranCangel Dev</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <!-- Bootstrap icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- CSS principal -->
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="../css/custom.css" rel="stylesheet" />
+</head>
+<body class="bg-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-darkmin">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="../index.html">FranCangel Dev</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#about">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="crew.html">Crew</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección del Producto -->
+    <section class="py-5 bg-dark text-white product-section">
+        <div class="container px-4 px-lg-5">
+            <a href="../index.html#about" class="btn-back"><i class="bi bi-arrow-left"></i> Volver al catálogo</a>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-10">
+                    <div class="text-center mb-5">
+                        <p class="section-eyebrow">Curso</p>
+                        <h1 class="display-5 fw-bolder">Curso de Creación de Mods</h1>
+                        <p class="lead fw-normal text-white-50 mb-0">Aprende a crear y modificar tus propios mods para GTA V PS3: edición de update.rpf y modificación de elementos del juego, paso a paso.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row gx-5">
+                <!-- Imagen principal y galería de miniaturas -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="main-image-frame">
+                        <!-- TODO: cambia estas 6 imágenes por tus propias capturas del curso -->
+                        <img id="main-product-image" src="../assets/modmenu.png" alt="Curso de Creación de Mods" class="img-fluid rounded-3">
+                    </div>
+                    <div class="thumbnail-gallery">
+                        <img src="../assets/modmenu.png" alt="Vista 1" class="img-fluid rounded-3 active" onclick="changeImage(this, '../assets/modmenu.png')">
+                        <img src="../assets/custommenu.jpg" alt="Vista 2" class="img-fluid rounded-3" onclick="changeImage(this, '../assets/custommenu.jpg')">
+                        <img src="../assets/eclipticv3.png" alt="Vista 3" class="img-fluid rounded-3" onclick="changeImage(this, '../assets/eclipticv3.png')">
+                        <img src="../assets/aetheroutfits.jpg" alt="Vista 4" class="img-fluid rounded-3" onclick="changeImage(this, '../assets/aetheroutfits.jpg')">
+                        <img src="../assets/files.jpg" alt="Vista 5" class="img-fluid rounded-3" onclick="changeImage(this, '../assets/files.jpg')">
+                        <img src="../assets/notepad.jpg" alt="Vista 6" class="img-fluid rounded-3" onclick="changeImage(this, '../assets/notepad.jpg')">
+                    </div>
+                </div>
+                <!-- Descripción y detalles -->
+                <div class="col-lg-6">
+                    <div class="chip-row mb-3">
+                        <span class="spec-chip chip-green">GTA V</span>
+                        <span class="spec-chip chip-blue">UPDATE.RPF</span>
+                        <span class="spec-chip chip-purple">PS3</span>
+                        <span class="spec-chip chip-red">DESDE CERO</span>
+                    </div>
+                    <p class="lead">
+                        Curso pensado para quienes quieren dejar de depender de otros y aprender a crear sus propios mods y menus para GTA V PS3.
+                        Verás cómo editar el update.rpf, modificar texturas, menús y otros elementos del juego, con explicaciones claras y de forma ordenada.
+                    </p>
+                    <p class="lead fw-bolder mb-2">Qué aprenderás:</p>
+                    <ul class="feature-list mb-4">
+                        <li><i class="bi bi-check2-circle"></i> Cómo editar correctamente el update.rpf.</li>
+                        <li><i class="bi bi-check2-circle"></i> Modificación de texturas, modelos y otros archivos del juego.</li>
+                        <li><i class="bi bi-check2-circle"></i> Prácticas para evitar corromper el juego sin freeze del menú.</li>
+                    </ul>
+
+                    <!-- Dos planes del curso, sin descuento (precio único cada uno) -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6">
+                            <div class="contact-card h-100 d-flex flex-column">
+                                <p class="section-eyebrow mb-1">Plan</p>
+                                <h5 class="fw-bold mb-2">Tutorial Básico</h5>
+                                <p class="text-white-50 small mb-3">Lo esencial para empezar a crear un mod menu loader.</p>
+                                <div class="price-block mb-3">
+                                    <span class="price-new">$ 10.00 USD</span>
+                                </div>
+                                <a class="btn btn-rainbow rounded-pill w-100 py-2 mt-auto" href="contact.html">
+                                    Solicitar Básico
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="contact-card h-100 d-flex flex-column">
+                                <p class="section-eyebrow mb-1">Plan</p>
+                                <h5 class="fw-bold mb-2">Completo Avanzado</h5>
+                                <p class="text-white-50 small mb-3">Todo el contenido básico más técnicas avanzadas para modificar un mod menu y el update.rpf.</p>
+                                <div class="price-block mb-3">
+                                    <span class="price-new">$ 20.00 USD</span>
+                                </div>
+                                <a class="btn btn-rainbow rounded-pill w-100 py-2 mt-auto" href="contact.html">
+                                    Solicitar Avanzado
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-lg-start">
+                        <a class="btn btn-outline-light btn-lg px-4" href="https://discord.com/invite/xpnMuycgS7" target="_blank" rel="noopener">
+                            Saber más
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Especificaciones y Características -->
+    <section class="py-5 bg-dark text-white border-top border-secondary">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-5">
+                <!-- Especificaciones -->
+                <div class="col-lg-6 mb-5">
+                    <p class="section-eyebrow">Requisitos</p>
+                    <h2 class="mb-4 section-heading">Antes de empezar</h2>
+                    <ul class="feature-list">
+                        <li><i class="bi bi-check2"></i> <strong>Jailbroken PS3 Required:</strong>&nbsp;Sí</li>
+                        <li><i class="bi bi-check2"></i> <strong>Conocimientos previos:</strong>&nbsp;No necesarios</li>
+                        <li><i class="bi bi-check2"></i> <strong>GTA RE:V &amp; 1.27:</strong>&nbsp;Sí</li>
+                        <li><i class="bi bi-check2"></i> <strong>HEN Supported:</strong>&nbsp;Sí</li>
+                        <li><i class="bi bi-check2"></i> <strong>CFW Supported:</strong>&nbsp;Sí</li>
+                        <li><i class="bi bi-check2"></i> <strong>CEX / DEX Supported:</strong>&nbsp;Sí</li>
+                    </ul>
+                </div>
+                <!-- Características -->
+                <div class="col-lg-6">
+                    <p class="section-eyebrow">Contenido</p>
+                    <h2 class="mb-4 section-heading">Qué incluye el curso</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="fw-bolder mb-2">Tutorial Básico</p>
+                            <ul class="feature-list">
+                                <li><i class="bi bi-check2"></i> <strong>Edición y creación de ModLoader por codigo ASM (.csc file):</strong>&nbsp;Sí</li>
+                                <li><i class="bi bi-check2"></i> <strong>Modificación de fotos de carga:</strong>&nbsp;Sí</li>
+								<li><i class="bi bi-check2"></i> <strong>Edición de colores del juego (hud):</strong>&nbsp;Sí</li>
+                                <li><i class="bi bi-check2"></i> <strong>Herramientas necesarias:</strong>&nbsp;Sí</li>
+								<li><i class="bi bi-check2"></i> <strong>Resolución de errores comunes:</strong>&nbsp;Sí</li>
+								<li><i class="bi bi-check2"></i> <strong>Metodo de inyección de script:</strong>&nbsp;Sí</li>
+								<li><i class="bi bi-check2"></i> <strong>Soporte hasta que termines tu primer menú:</strong>&nbsp;Sí</li>
+                                <li><i class="bi bi-check2"></i> <strong>Soporte por Discord:</strong>&nbsp;Sí</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="fw-bolder mb-2">Completo Avanzado</p>
+                            <ul class="feature-list">
+                                <li><i class="bi bi-check2"></i> <strong>Todo lo del plan Básico:</strong>&nbsp;Sí</li>
+                                <li><i class="bi bi-check2"></i> <strong>Modificación de menús:</strong>&nbsp;Sí</li>
+                                <li><i class="bi bi-check2"></i> <strong>Técnicas avanzadas de edición:</strong>&nbsp;Sí</li>
+								<li><i class="bi bi-check2"></i> <strong>Edición de update.rpf:</strong>&nbsp;Sí</li>
+                                <li><i class="bi bi-check2"></i> <strong>Modificación de texturas:</strong>&nbsp;Sí</li>
+                                <li><i class="bi bi-check2"></i> <strong>Resolución de errores comunes:</strong>&nbsp;Sí</li>
+								<li><i class="bi bi-check2"></i> <strong>Metodo de inyección de script:</strong>&nbsp;Sí</li>
+								<li><i class="bi bi-check2"></i> <strong>Soporte hasta que termines tu primer menú:</strong>&nbsp;Sí</li>
+                                <li><i class="bi bi-check2"></i> <strong>Soporte prioritario:</strong>&nbsp;Sí</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-darkmin">
+        <div class="container">
+            <p class="m-0 text-center">Copyright &copy; FranCangel Dev 2025</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script para cambiar la imagen principal -->
+    <script>
+        function changeImage(thumb, newImageUrl) {
+            document.getElementById('main-product-image').src = newImageUrl;
+            document.querySelectorAll('.thumbnail-gallery img').forEach(img => img.classList.remove('active'));
+            thumb.classList.add('active');
+        }
+    </script>
+</body>
+</html>

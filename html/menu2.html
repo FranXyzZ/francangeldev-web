@@ -3,55 +3,30 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Ecliptic v3.0.0, mod loader gratuito para GTA V PS3, compatible con 1.27 y REV." />
     <title>Ecliptic Mod Menu - FranCangel Dev</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
     <!-- Bootstrap icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- CSS principal -->
     <link href="../css/styles.css" rel="stylesheet" />
-    <style>
-        .product-section .img-fluid {
-            max-width: 100%;
-            height: auto;
-            border-radius: 0.5rem;
-        }
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-        /* Estilo para la galería de miniaturas */
-        .thumbnail-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 10px;
-            margin-top: 1rem;
-        }
-        .thumbnail-gallery img {
-            border: 2px solid transparent;
-            border-radius: 0.25rem;
-            cursor: pointer;
-            transition: border-color 0.3s;
-        }
-        .thumbnail-gallery img:hover,
-        .thumbnail-gallery img.active {
-            border-color: #fff;
-        }
-    </style>
+    <link href="../css/custom.css" rel="stylesheet" />
 </head>
-<body>
+<body class="bg-dark">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-darkmin">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="../index.html">FranCangel Dev</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#about">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="crew.html">Crew</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
                 </ul>
             </div>
@@ -61,9 +36,11 @@
     <!-- Sección del Producto -->
     <section class="py-5 bg-dark text-white product-section">
         <div class="container px-4 px-lg-5">
+            <a href="../index.html#about" class="btn-back"><i class="bi bi-arrow-left"></i> Volver al catálogo</a>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-10">
                     <div class="text-center mb-5">
+                        <p class="section-eyebrow">Mod Loader</p>
                         <h1 class="display-5 fw-bolder">Ecliptic Mod Loader</h1>
                         <p class="lead fw-normal text-white-50 mb-0">Mod Loader para GTA V de PlayStation 3</p>
                     </div>
@@ -72,43 +49,46 @@
             <div class="row gx-5">
                 <!-- Imagen principal y galería de miniaturas -->
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <img id="main-product-image" src="../assets/ecliptic/ecliptic01.png" alt="Ecliptic Mod Menu" class="img-fluid rounded-3">
+                    <div class="main-image-frame">
+                        <img id="main-product-image" src="../assets/ecliptic/ecliptic01.png" alt="Ecliptic Mod Menu" class="img-fluid rounded-3">
+                    </div>
                     <div class="thumbnail-gallery">
-						<img src="../assets/eclipticv3.png" alt="Menú 1" class="img-fluid rounded-3" onclick="changeImage('../assets/eclipticv3.png')">
-						<img src="../assets/ecliptic/ecliptic2.png" alt="Menú 4" class="img-fluid rounded-3" onclick="changeImage('../assets/ecliptic/ecliptic2.png')">
-						<img src="../assets/ecliptic/ecliptic5.png" alt="Menú 4" class="img-fluid rounded-3" onclick="changeImage('../assets/ecliptic/ecliptic5.png')">
-                        <img src="../assets/ecliptic/ecliptic3.png" alt="Menú 4" class="img-fluid rounded-3" onclick="changeImage('../assets/ecliptic/ecliptic3.png')">
-                        <img src="../assets/ecliptic/ecliptic4.png" alt="Menú 2" class="img-fluid rounded-3" onclick="changeImage('../assets/ecliptic/ecliptic4.png')">
-                        <img src="../assets/ecliptic/ecliptic1.png" alt="Menú 1" class="img-fluid rounded-3" onclick="changeImage('../assets/ecliptic/ecliptic1.png')">
+                        <img src="../assets/eclipticv3.png" alt="Vista Ecliptic 1" class="img-fluid rounded-3" onclick="changeImage(this, '../assets/eclipticv3.png')">
+                        <img src="../assets/ecliptic/ecliptic2.png" alt="Vista Ecliptic 2" class="img-fluid rounded-3" onclick="changeImage(this, '../assets/ecliptic/ecliptic2.png')">
+                        <img src="../assets/ecliptic/ecliptic5.png" alt="Vista Ecliptic 5" class="img-fluid rounded-3" onclick="changeImage(this, '../assets/ecliptic/ecliptic5.png')">
+                        <img src="../assets/ecliptic/ecliptic3.png" alt="Vista Ecliptic 3" class="img-fluid rounded-3" onclick="changeImage(this, '../assets/ecliptic/ecliptic3.png')">
+                        <img src="../assets/ecliptic/ecliptic4.png" alt="Vista Ecliptic 4" class="img-fluid rounded-3" onclick="changeImage(this, '../assets/ecliptic/ecliptic4.png')">
+                        <img src="../assets/ecliptic/ecliptic1.png" alt="Vista Ecliptic 1b" class="img-fluid rounded-3" onclick="changeImage(this, '../assets/ecliptic/ecliptic1.png')">
                     </div>
                 </div>
                 <!-- Descripción y detalles -->
                 <div class="col-lg-6">
-					<div class="badge bg-custom-green text-white mb-3">GTA V</div>
-					<div class="badge bg-custom-purple text-white mb-3">1.27</div>
-					<div class="badge bg-custom-red text-white mb-3">REV</div>
-					<div class="badge bg-primary text-white mb-3">.RPF</div>
+                    <div class="chip-row mb-3">
+                        <span class="spec-chip chip-green">GTA V</span>
+                        <span class="spec-chip chip-purple">1.27</span>
+                        <span class="spec-chip chip-red">REV</span>
+                        <span class="spec-chip chip-blue">.RPF</span>
+                    </div>
                     <p class="lead">
-                        Mod Loader para GTA V PS3, actualizado a la versión 1.27 y REV, compatible con diferentes configuraciones de consola. Permite personalizar y gestionar múltiples aspectos del juego tanto offline como online, manteniendo estabilidad y compatibilidad con todas las funciones principales y opciónes exclusivas.
+                        Mod Loader para GTA V PS3, actualizado a la versión 1.27 y REV, compatible con diferentes configuraciones de consola.
+                        Permite personalizar y gestionar múltiples aspectos del juego tanto offline como online, manteniendo estabilidad y compatibilidad con todas las funciones principales y opciones exclusivas.
                     </p>
-                    <p class="lead fw-bolder">
-                        Características destacadas:
-                        <ul>
-                            <li>Compatible con GTA V 1.27 y REV.</li>
-                            <li>Soporte para consolas CEX, DEX, BLUS, BLES, HEN y CFW.</li>
-							<li>Todas las opciónes propias de un sprx y mod menu en un solo menú.</li>
-                        </ul>
-                    </p>
-					<div class="mb-3 text-center text-lg-start">
-						<!-- <span class="fs-5 fw-normal" style="color:red; text-decoration: line-through; margin-right: 0.5rem;">21.99 USD</span> -->
-						<span class="fs-4 fw-bold" style="color:lime;">$ Gratis</span>
-					</div>
+                    <p class="lead fw-bolder mb-2">Características destacadas:</p>
+                    <ul class="feature-list mb-4">
+                        <li><i class="bi bi-check2-circle"></i> Compatible con GTA V 1.27 y REV.</li>
+                        <li><i class="bi bi-check2-circle"></i> Soporte para consolas CEX, DEX, BLUS, BLES, HEN y CFW.</li>
+                        <li><i class="bi bi-check2-circle"></i> Todas las opciones propias de un sprx y mod menu en un solo menú.</li>
+                    </ul>
+
+                    <div class="price-block mb-3">
+                        <span class="price-new">$ Gratis</span>
+                    </div>
 
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-lg-start">
-                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="https://www.youtube.com/watch?v=X5fyP-6GWsE&t=199s">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="https://www.youtube.com/watch?v=X5fyP-6GWsE&t=199s" target="_blank" rel="noopener">
                             Descargar
                         </a>
-                        <a class="btn btn-outline-light btn-lg px-4" href="https://discord.com/invite/xpnMuycgS7" target="_blank">
+                        <a class="btn btn-outline-light btn-lg px-4" href="https://discord.com/invite/xpnMuycgS7" target="_blank" rel="noopener">
                             Saber más
                         </a>
                     </div>
@@ -123,43 +103,46 @@
             <div class="row gx-5">
                 <!-- Especificaciones -->
                 <div class="col-lg-6 mb-5">
-                    <h2 class="mb-4">Especificaciones:</h2>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><strong>Jailbroken PS3 Required:</strong> Si</li>
-                        <li class="mb-2"><strong>GTA RE:V & 1.27:</strong> Si</li>
-                        <li class="mb-2"><strong>GTA Online:</strong> Si</li>
-						<li class="mb-2"><strong>HEN Supported:</strong> Si</li>
-						<li class="mb-2"><strong>CFW Supported:</strong> Si</li>
-                        <li class="mb-2"><strong>CEX Supported:</strong> Si</li>
-                        <li class="mb-2"><strong>DEX Supported:</strong> Si</li>
-                        <li class="mb-2"><strong>BLUS Supported:</strong> Si</li>
-                        <li class="mb-2"><strong>BLES Supported:</strong> Si</li>
-                        <li class="mb-2"><strong>NPEB Supported:</strong> Si</li>
-                        <li class="mb-2"><strong>NPUB Supported:</strong> Si</li>
+                    <p class="section-eyebrow">Compatibilidad</p>
+                    <h2 class="mb-4 section-heading">Especificaciones</h2>
+                    <ul class="feature-list">
+                        <li><i class="bi bi-check2"></i> <strong>Jailbroken PS3 Required:</strong>&nbsp;Sí</li>
+                        <li><i class="bi bi-check2"></i> <strong>GTA RE:V &amp; 1.27:</strong>&nbsp;Sí</li>
+                        <li><i class="bi bi-check2"></i> <strong>GTA Online:</strong>&nbsp;Sí</li>
+                        <li><i class="bi bi-check2"></i> <strong>HEN Supported:</strong>&nbsp;Sí</li>
+                        <li><i class="bi bi-check2"></i> <strong>CFW Supported:</strong>&nbsp;Sí</li>
+                        <li><i class="bi bi-check2"></i> <strong>CEX Supported:</strong>&nbsp;Sí</li>
+                        <li><i class="bi bi-check2"></i> <strong>DEX Supported:</strong>&nbsp;Sí</li>
+                        <li><i class="bi bi-check2"></i> <strong>BLUS Supported:</strong>&nbsp;Sí</li>
+                        <li><i class="bi bi-check2"></i> <strong>BLES Supported:</strong>&nbsp;Sí</li>
+                        <li><i class="bi bi-check2"></i> <strong>NPEB Supported:</strong>&nbsp;Sí</li>
+                        <li><i class="bi bi-check2"></i> <strong>NPUB Supported:</strong>&nbsp;Sí</li>
                     </ul>
                 </div>
                 <!-- Características -->
                 <div class="col-lg-6">
-                    <h2 class="mb-4">Características:</h2>
-					<div class="row">
-						<div class="col-md-6">
-							<ul class="list-unstyled">
-								<li class="mb-2"><strong>Opciones de Jugador:</strong> Habilidades, animaciones y apariencia</li>
-								<li class="mb-2"><strong>Opciones de Vehículos:</strong> Generación y personalización</li>
-								<li class="mb-2"><strong>Opciones de Armas:</strong> Modificación y acceso completo</li>
-								<li class="mb-2"><strong>Teletransporte:</strong> A cualquier ubicación del mapa</li>
-								<li class="mb-2"><strong>Opciones del Mundo:</strong> Clima, hora, peatones y tráfico</li>
-								<li class="mb-2"><strong>Funciones Online:</strong> Gestión de sesiones y protección frente a otros modders</li>
-								<li class="mb-2"><strong>Recovery:</strong> Modificación de dinero, rango, desbloqueos y DLC</li>
-							</ul>
-						</div>
-						<div class="col-md-6">
-								<li class="mb-2"><strong>Menús Personalizables:</strong> Diseño, colores y disposición ajustables</li>
-								<li class="mb-2"><strong>Protección Avanzada:</strong> Prevención de congelamientos y bloqueos</li>
-								<li class="mb-2"><strong>Modularidad:</strong> Activación y desactivación de funciones según necesidad</li>
-							</ul>
-						</div>
-					</div>
+                    <p class="section-eyebrow">Funciones</p>
+                    <h2 class="mb-4 section-heading">Características</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="feature-list">
+                                <li><i class="bi bi-check2"></i> <strong>Opciones de Jugador:</strong>&nbsp;Habilidades, animaciones y apariencia</li>
+                                <li><i class="bi bi-check2"></i> <strong>Opciones de Vehículos:</strong>&nbsp;Generación y personalización</li>
+                                <li><i class="bi bi-check2"></i> <strong>Opciones de Armas:</strong>&nbsp;Modificación y acceso completo</li>
+                                <li><i class="bi bi-check2"></i> <strong>Teletransporte:</strong>&nbsp;A cualquier ubicación del mapa</li>
+                                <li><i class="bi bi-check2"></i> <strong>Opciones del Mundo:</strong>&nbsp;Clima, hora, peatones y tráfico</li>
+                                <li><i class="bi bi-check2"></i> <strong>Funciones Online:</strong>&nbsp;Gestión de sesiones y protección frente a otros modders</li>
+                                <li><i class="bi bi-check2"></i> <strong>Recovery:</strong>&nbsp;Modificación de dinero, rango, desbloqueos y DLC</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="feature-list">
+                                <li><i class="bi bi-check2"></i> <strong>Menús Personalizables:</strong>&nbsp;Diseño, colores y disposición ajustables</li>
+                                <li><i class="bi bi-check2"></i> <strong>Protección Avanzada:</strong>&nbsp;Prevención de congelamientos y bloqueos</li>
+                                <li><i class="bi bi-check2"></i> <strong>Modularidad:</strong>&nbsp;Activación y desactivación de funciones según necesidad</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -168,7 +151,7 @@
     <!-- Footer -->
     <footer class="py-4 bg-darkmin">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; FranCangel Dev 2025</p>
+            <p class="m-0 text-center">Copyright &copy; FranCangel Dev 2025</p>
         </div>
     </footer>
 
@@ -176,10 +159,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Script para cambiar la imagen principal -->
     <script>
-        function changeImage(newImageUrl) {
+        function changeImage(thumb, newImageUrl) {
             document.getElementById('main-product-image').src = newImageUrl;
+            document.querySelectorAll('.thumbnail-gallery img').forEach(img => img.classList.remove('active'));
+            thumb.classList.add('active');
         }
     </script>
 </body>
-
 </html>

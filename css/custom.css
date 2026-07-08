@@ -1,0 +1,554 @@
+/* ============================================================
+   FranCangel Dev — Custom Theme Layer
+   Se carga DESPUÉS de styles.css y solo añade/mejora estilos.
+   No toca: #particles (del header), .rainbow-text ni los textos.
+   El color principal pasó de azul celeste a morado/neón.
+   Editar aquí es lo único que hace falta para retocar el look.
+   ============================================================ */
+
+/* ---- Tipografía ------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap');
+
+/* ---- Design tokens ------------------------------------------ */
+:root {
+  /* Fondos — un punto más oscuros que antes y con un leve tinte morado */
+  --bg-ultra: #0a090d;
+  --bg-min: #131218;
+  --bg-elevated: #1b1a22;
+
+  /* Acento principal: antes azul celeste (#00aaff), ahora morado neón */
+  --accent: #a855f7;
+  --accent-2: #7c3aed;
+
+  /* Colores de estado — se mantienen los mismos que ya usaba la web */
+  --price-old: #ff4d4d;
+  --price-new: #39ff6a;
+
+  /* Chips de especificación (mismos tonos que bg-custom-*) */
+  --chip-green: #1fbf5c;
+  --chip-purple: #c56bff;
+  --chip-red: #ff5d5d;
+  --chip-blue: var(--accent);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --text-muted: rgba(255, 255, 255, 0.6);
+
+  --radius-md: 0.75rem;
+  --radius-lg: 1.1rem;
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+  --font-display: 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Posición del brillo neón que sigue al cursor (la actualiza scripts.js) */
+  --mx: 50%;
+  --my: 40%;
+}
+
+body {
+  font-family: var(--font-display);
+  position: relative;
+  isolation: isolate; /* crea su propio contexto de apilamiento para el fondo neón */
+  background-color: var(--bg-ultra);
+}
+
+/* ---- Fondo neón sutil e interactivo -------------------------
+   Dos capas fijas, detrás de todo el contenido (z-index: -1):
+   1) unos brillos morados que se desplazan solos muy despacio.
+   2) un resplandor tenue que sigue un poco al cursor (scripts.js
+      actualiza --mx / --my). En pantallas táctiles o con
+      "reducir movimiento" activado, solo queda la capa 1, quieta.
+   No sustituye ni toca las partículas del header (#particles). */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  background-image:
+    radial-gradient(circle at 18% 20%, rgba(168, 85, 247, 0.16), transparent 55%),
+    radial-gradient(circle at 82% 78%, rgba(124, 58, 237, 0.14), transparent 55%),
+    radial-gradient(circle at 50% 100%, rgba(192, 132, 252, 0.10), transparent 55%);
+  background-repeat: no-repeat;
+  background-size: 200% 200%;
+  animation: neonDrift 26s ease-in-out infinite alternate;
+}
+
+body::after {
+  background-image: radial-gradient(28rem 24rem at var(--mx) var(--my), rgba(168, 85, 247, 0.12), transparent 65%);
+}
+
+@keyframes neonDrift {
+  0%   { background-position: 0% 0%, 100% 100%, 50% 100%; }
+  50%  { background-position: 12% 8%, 88% 92%, 58% 88%; }
+  100% { background-position: 4% 18%, 96% 82%, 42% 96%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* ---- Utilidad: kicker / eyebrow sobre títulos de sección --- */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.section-eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px 2px rgba(168, 85, 247, 0.7);
+  flex-shrink: 0;
+}
+
+.section-heading {
+  color: #fff;
+  font-weight: 800;
+}
+
+.section-subtext {
+  color: var(--text-muted);
+}
+
+/* ---- Fondos algo más oscuros y translúcidos ------------------
+   Se pisan los colores sólidos de styles.css por versiones con
+   una pizca de transparencia: así el sitio se ve más oscuro y,
+   de paso, deja asomar muy sutilmente el fondo neón de detrás. */
+.bg-ultradark {
+  background-color: rgba(10, 9, 13, 0.96) !important;
+}
+
+.bg-darkmin {
+  background-color: rgba(19, 18, 24, 0.94) !important;
+}
+
+.bg-dark {
+  background-color: rgba(12, 11, 15, 0.95) !important;
+}
+
+/* ---- Separaciones entre secciones -----------------------------
+   Línea fina en degradado (transparente → morado tenue →
+   transparente) en vez del borde gris plano de antes: marca mejor
+   dónde empieza cada bloque sin recargar la página. */
+body > section,
+footer {
+  position: relative;
+  border-top: 1px solid transparent;
+  border-image: linear-gradient(90deg, transparent, var(--border-strong) 12%, rgba(168, 85, 247, 0.4) 50%, var(--border-strong) 88%, transparent) 1;
+}
+
+body > section:first-of-type {
+  border-top: none;
+}
+
+/* Los bloques que ya traían su propio "border-top border-secondary"
+   (secciones de especificaciones en las páginas de producto) pasan
+   a usar el mismo degradado en vez del gris plano de Bootstrap. */
+.border-top.border-secondary {
+  border-top: 1px solid transparent !important;
+  border-image: linear-gradient(90deg, transparent, var(--border-strong) 12%, rgba(168, 85, 247, 0.4) 50%, var(--border-strong) 88%, transparent) 1;
+}
+
+/* ---- Navbar ------------------------------------------------- */
+.navbar.bg-darkmin,
+.navbar.bg-ultradark {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transition: text-shadow 0.25s ease;
+}
+
+.navbar-brand:hover {
+  text-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
+}
+
+.navbar-nav .nav-link {
+  position: relative;
+  font-weight: 500;
+  color: var(--text-muted) !important;
+  padding-inline: 0.85rem;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #fff !important;
+}
+
+.navbar-nav .nav-link.active {
+  color: #fff !important;
+}
+
+.navbar-nav .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: -2px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.8);
+}
+
+/* ---- Header / hero ------------------------------------------ */
+header .lead {
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header h1 {
+  text-shadow: 0 0 30px rgba(168, 85, 247, 0.35);
+}
+
+/* Fondo del header: puede ser la foto de siempre (.hero-bg) o,
+   si se descomenta la etiqueta <video> en el HTML, un vídeo
+   (.hero-bg-video). Los dos ocupan el mismo hueco detrás de las
+   partículas y el texto, sin tocar ninguno de los dos. */
+.hero-header {
+  isolation: isolate;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Velo oscuro para que el texto siga leyéndose igual de bien tanto
+   con la foto como con un vídeo, y para que el header quede "un
+   poquito más oscuro" en línea con el resto de la página. */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(8, 6, 12, 0.5) 0%, rgba(8, 6, 12, 0.72) 100%);
+}
+
+/* ---- Botones minimalistas (sección "Explora más") ---------- */
+.minimal-btn {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+}
+
+/* ---- Botón principal: antes gradiente azul, ahora morado ---- */
+.btn-rainbow {
+  background: linear-gradient(90deg, var(--accent-2), var(--accent)) !important;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.6) !important;
+}
+
+.btn-rainbow:hover {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2)) !important;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.9) !important;
+}
+
+/* ---- Product cards ------------------------------------------ */
+.product-card {
+  border: 1px solid var(--border-subtle) !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(168, 85, 247, 0.4) !important;
+  box-shadow: var(--shadow-card), 0 0 24px rgba(168, 85, 247, 0.25);
+}
+
+.product-card .card-title {
+  color: #fff;
+}
+
+.product-card .card-text {
+  color: var(--text-muted);
+}
+
+/* ---- Badge de oferta (el "-36%" de las tarjetas de producto) --
+   En styles.css viene en verde; aquí lo pasamos a rojo. */
+.offer-badge {
+  background-color: #e53e3e !important; /* Rojo */
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(229, 62, 62, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(229, 62, 62, 0);
+  }
+}
+
+/* ---- Chips de especificación (reemplazan los badges sólidos) */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.spec-chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.32rem 0.65rem;
+  border-radius: 0.4rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--chip-color, var(--border-strong));
+  color: var(--chip-color, #fff);
+}
+
+.spec-chip.chip-green { --chip-color: var(--chip-green); }
+.spec-chip.chip-purple { --chip-color: var(--chip-purple); }
+.spec-chip.chip-red { --chip-color: var(--chip-red); }
+.spec-chip.chip-blue { --chip-color: var(--chip-blue); }
+
+.spec-chip {
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.spec-chip:hover {
+  box-shadow: 0 0 10px var(--chip-color, var(--accent));
+  transform: translateY(-1px);
+}
+
+/* ---- Precio --------------------------------------------------- */
+.price-block {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+}
+
+.price-old {
+  color: var(--price-old);
+  text-decoration: line-through;
+  opacity: 0.7;
+  font-size: 1rem;
+}
+
+.price-new {
+  color: var(--price-new);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-shadow: 0 0 14px rgba(57, 255, 106, 0.5);
+}
+
+/* ---- Galería de miniaturas ------------------------------------ */
+
+/* Imagen principal: se ve completa (sin recortar), con un alto máximo
+   para que la caja no cambie de tamaño de forma descontrolada entre
+   fotos verticales y horizontales. Las franjas que puedan quedar se
+   rellenan con el mismo tono oscuro de las tarjetas. */
+.main-image-frame {
+  width: 100%;
+  max-height: 520px;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.08), 0 0 40px rgba(168, 85, 247, 0.12);
+}
+
+#main-product-image {
+  width: 100%;
+  height: 100%;
+  max-height: 520px;
+  object-fit: contain;
+}
+
+/* Cuadrícula de miniaturas debajo de la imagen principal */
+.thumbnail-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.thumbnail-gallery img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  width: 100%;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  background: var(--bg-elevated);
+}
+
+.thumbnail-gallery img:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+}
+
+.thumbnail-gallery img.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.55);
+}
+
+/* ---- Listas de especificaciones / características -------------- */
+.feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+  color: #e6e6e6;
+}
+
+.feature-list li:last-child {
+  border-bottom: none;
+}
+
+.feature-list li i {
+  color: var(--accent);
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.feature-list li strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ---- Tarjetas de colaboradores ---------------------------------- */
+.friend-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  border: 1px solid var(--border-subtle) !important;
+}
+
+.friend-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(168, 85, 247, 0.35) !important;
+  box-shadow: var(--shadow-card), 0 0 20px rgba(168, 85, 247, 0.2);
+}
+
+/* ---- Tarjetas de contacto / crew --------------------------------- */
+.contact-card {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  background: var(--bg-elevated);
+}
+
+.contact-link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-link-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.contact-link-list li:last-child {
+  border-bottom: none;
+}
+
+.contact-link-list a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.contact-link-list a:hover {
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+/* ---- Botón "volver" en páginas de producto ----------------------- */
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.btn-back:hover {
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+/* ---- Footer -------------------------------------------------------- */
+footer p {
+  color: var(--text-muted);
+}
+
+/* ---- Accesibilidad: foco visible ------------------------------------ */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---- Reduce motion --------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .product-card,
+  .friend-card,
+  .minimal-btn,
+  .minimal-img {
+    transition: none !important;
+  }
+}
+
+.minimal-btn:hover {
+  color: var(--accent) !important;
+}
+
+.minimal-btn:hover .minimal-img {
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4) !important;
+}
